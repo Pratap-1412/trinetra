@@ -257,8 +257,9 @@ const jobData: Record<
   },
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const job = jobData[params.id]
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const job = jobData[id]
 
   if (!job) {
     return {
@@ -274,8 +275,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 }
 
-export default function JobDetailPage({ params }: { params: { id: string } }) {
-  const job = jobData[params.id]
+export default async function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const job = jobData[id]
 
   if (!job) {
     return (
