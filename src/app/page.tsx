@@ -1,3 +1,5 @@
+"use client"
+
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import {
@@ -17,9 +19,58 @@ import {
   Zap,
   Target,
   TrendingUp,
+  Code,
+  Megaphone,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export default function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const heroSlides = [
+    {
+      title: "AI-Driven Digital Marketing",
+      subtitle: "Transform Your Business with Smart Marketing Solutions",
+      description:
+        "Leverage cutting-edge AI technology to optimize your marketing campaigns and drive unprecedented growth.",
+      image: "/modern-digital-marketing-dashboard-with-analytics-.jpg",
+      cta: "Explore AI Solutions",
+    },
+    {
+      title: "Political Campaign Excellence",
+      subtitle: "Win Elections with Strategic Digital Campaigns",
+      description:
+        "Comprehensive political campaigning services including WhatsApp groups, social ads, and targeted voter outreach.",
+      image: "/team-collaboration-in-modern-office-with-digital-m.jpg",
+      cta: "View Campaign Services",
+    },
+    {
+      title: "Website Development",
+      subtitle: "Build Stunning Websites That Convert",
+      description:
+        "Custom website development with modern technologies, responsive design, and seamless user experiences.",
+      image: "/modern-digital-marketing-dashboard-with-analytics-.jpg",
+      cta: "Start Your Project",
+    },
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [heroSlides.length])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
+  }
+
   const services = [
     {
       icon: MessageSquare,
@@ -50,6 +101,16 @@ export default function HomePage() {
       icon: Vote,
       title: "Political Campaigning",
       description: "WhatsApp groups, social ads, and poster campaigns for political success.",
+    },
+    {
+      icon: Code,
+      title: "Website Development",
+      description: "Custom websites with modern design, responsive layouts, and powerful functionality.",
+    },
+    {
+      icon: Megaphone,
+      title: "Digital Marketing",
+      description: "Comprehensive digital marketing strategies that deliver measurable results.",
     },
     {
       icon: Building2,
@@ -101,43 +162,143 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Section */}
+      {/* Enhanced Hero Section with Carousel */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5"></div>
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </div>
+        </div>
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-4xl lg:text-6xl font-bold text-foreground text-balance">
-                  Welcome to <span className="text-primary">Trinetra Techverse</span>
-                </h1>
-                <h2 className="text-xl lg:text-2xl text-secondary font-semibold">
-                  Orbit Media - AI-Driven Digital Marketing Agency
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  One Stop Digital Marketing Service powered by AI. Transform your business with comprehensive marketing
-                  solutions that deliver real results.
-                </p>
+          {/* Carousel Content */}
+          <div className="relative">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={index}
+                className={`transition-all duration-700 ${
+                  index === currentSlide ? "opacity-100 relative" : "opacity-0 absolute inset-0 pointer-events-none"
+                }`}
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  {/* Text Content */}
+                  <div className="space-y-8 z-10">
+                    <div className="space-y-6">
+                      {/* Badge */}
+                      <div className="inline-flex items-center space-x-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold">
+                        <Zap className="w-4 h-4" />
+                        <span>Trinetra Techverse - Orbit Media</span>
+                      </div>
+
+                      {/* Main Heading */}
+                      <h1 className="text-5xl lg:text-7xl font-bold text-foreground text-balance leading-tight">
+                        {slide.title.split(" ").map((word, i) =>
+                          i === slide.title.split(" ").length - 1 || i === slide.title.split(" ").length - 2 ? (
+                            <span key={i} className="text-secondary">
+                              {word}{" "}
+                            </span>
+                          ) : (
+                            <span key={i}>{word} </span>
+                          ),
+                        )}
+                      </h1>
+
+                      {/* Subtitle */}
+                      <h2 className="text-2xl lg:text-3xl text-primary font-semibold text-balance">{slide.subtitle}</h2>
+
+                      {/* Description */}
+                      <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl">
+                        {slide.description}
+                      </p>
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-2xl hover:bg-secondary/90 transition-all duration-300 font-semibold flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                        <span>{slide.cta}</span>
+                        <ArrowRight className="w-5 h-5" />
+                      </button>
+                      <button className="border-2 border-primary text-primary px-8 py-4 rounded-2xl hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-semibold">
+                        Contact Us
+                      </button>
+                    </div>
+
+                    {/* Stats */}
+                    <div className="grid grid-cols-3 gap-6 pt-8">
+                      <div className="space-y-1">
+                        <div className="text-3xl font-bold text-secondary">500+</div>
+                        <div className="text-sm text-muted-foreground">Happy Clients</div>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-3xl font-bold text-secondary">1000+</div>
+                        <div className="text-sm text-muted-foreground">Projects Done</div>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-3xl font-bold text-secondary">98%</div>
+                        <div className="text-sm text-muted-foreground">Success Rate</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Image with Enhanced Styling */}
+                  <div className="relative lg:h-[600px] flex items-center justify-center">
+                    <div className="relative w-full h-full">
+                      {/* Decorative Elements */}
+                      <div className="absolute -top-6 -right-6 w-24 h-24 bg-secondary/20 rounded-3xl rotate-12 blur-sm"></div>
+                      <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/20 rounded-3xl -rotate-12 blur-sm"></div>
+
+                      {/* Main Image Card */}
+                      <div className="relative bg-card rounded-3xl p-4 shadow-2xl border border-border h-full overflow-hidden group">
+                        <div className="relative h-full rounded-2xl overflow-hidden">
+                          <img
+                            src={slide.image || "/placeholder.svg"}
+                            alt={slide.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Overlay Gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Carousel Controls */}
+            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center gap-4 lg:justify-between mt-8">
+              {/* Navigation Buttons */}
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={prevSlide}
+                  className="w-12 h-12 rounded-full bg-card border-2 border-border hover:border-secondary hover:bg-secondary/10 transition-all duration-300 flex items-center justify-center group"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-6 h-6 text-foreground group-hover:text-secondary transition-colors" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="w-12 h-12 rounded-full bg-card border-2 border-border hover:border-secondary hover:bg-secondary/10 transition-all duration-300 flex items-center justify-center group"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-6 h-6 text-foreground group-hover:text-secondary transition-colors" />
+                </button>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-primary text-primary-foreground px-8 py-4 rounded-2xl hover:bg-primary/90 transition-colors font-semibold flex items-center justify-center space-x-2">
-                  <span>Explore Services</span>
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-                <button className="border border-border text-foreground px-8 py-4 rounded-2xl hover:bg-muted transition-colors font-semibold">
-                  Contact Us
-                </button>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-card rounded-3xl p-8 shadow-soft-lg border border-border">
-                <img
-                  src="/modern-digital-marketing-dashboard-with-analytics-.jpg"
-                  alt="Digital Marketing Dashboard"
-                  className="w-full h-auto rounded-2xl"
-                />
+              {/* Slide Indicators */}
+              <div className="flex items-center gap-2">
+                {heroSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentSlide ? "w-8 bg-secondary" : "w-2 bg-border hover:bg-secondary/50"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -213,13 +374,15 @@ export default function HomePage() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-card border border-border rounded-3xl p-8 hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1 group"
+                className="bg-card border border-border rounded-3xl p-8 hover:shadow-soft-lg hover:border-secondary/50 transition-all duration-300 hover:-translate-y-1 group"
               >
                 <div className="space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="w-8 h-8 text-primary" />
+                  <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                    <service.icon className="w-8 h-8 text-secondary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground">{service.title}</h3>
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-secondary transition-colors">
+                    {service.title}
+                  </h3>
                   <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
               </div>
@@ -237,8 +400,8 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center space-y-6">
-              <div className="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mx-auto">
-                <Zap className="w-10 h-10 text-primary-foreground" />
+              <div className="w-20 h-20 bg-secondary rounded-3xl flex items-center justify-center mx-auto shadow-lg">
+                <Zap className="w-10 h-10 text-secondary-foreground" />
               </div>
               <h3 className="text-2xl font-bold text-foreground">All-in-One Solution</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -248,8 +411,8 @@ export default function HomePage() {
             </div>
 
             <div className="text-center space-y-6">
-              <div className="w-20 h-20 bg-secondary rounded-3xl flex items-center justify-center mx-auto">
-                <Target className="w-10 h-10 text-secondary-foreground" />
+              <div className="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mx-auto shadow-lg">
+                <Target className="w-10 h-10 text-primary-foreground" />
               </div>
               <h3 className="text-2xl font-bold text-foreground">AI-Powered Insights</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -259,8 +422,8 @@ export default function HomePage() {
             </div>
 
             <div className="text-center space-y-6">
-              <div className="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mx-auto">
-                <TrendingUp className="w-10 h-10 text-primary-foreground" />
+              <div className="w-20 h-20 bg-secondary rounded-3xl flex items-center justify-center mx-auto shadow-lg">
+                <TrendingUp className="w-10 h-10 text-secondary-foreground" />
               </div>
               <h3 className="text-2xl font-bold text-foreground">Result-Oriented Approach</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -284,7 +447,10 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-card border border-border rounded-3xl p-8 space-y-6">
+              <div
+                key={index}
+                className="bg-card border border-border rounded-3xl p-8 space-y-6 hover:shadow-soft-lg hover:border-secondary/50 transition-all duration-300"
+              >
                 <div className="flex space-x-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-secondary fill-current" />
@@ -302,22 +468,26 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-gradient-to-r from-primary to-primary/90 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground text-balance">
               Ready to Transform Your Digital Marketing?
             </h2>
-            <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed">
               Join hundreds of businesses that have already experienced exponential growth with our AI-powered marketing
               solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-2xl hover:bg-secondary/90 transition-colors font-semibold flex items-center justify-center space-x-2">
+              <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-2xl hover:bg-secondary/90 transition-all duration-300 font-semibold flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
                 <span>Get Started Today</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="border border-primary-foreground/20 text-primary-foreground px-8 py-4 rounded-2xl hover:bg-primary-foreground/10 transition-colors font-semibold">
+              <button className="border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-2xl hover:bg-primary-foreground hover:text-primary transition-all duration-300 font-semibold">
                 Schedule a Consultation
               </button>
             </div>

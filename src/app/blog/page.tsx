@@ -2,6 +2,15 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Link from "next/link"
 import { Calendar, Clock, User, ArrowRight, TrendingUp, Search, Share2 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Marketing Blog - Digital Marketing Insights & Tips | Trinetra Techverse",
+  description:
+    "Stay updated with the latest digital marketing trends, strategies, and insights. Expert articles on AI marketing, SEO, social media, political campaigns, and more from Orbit Media's marketing professionals.",
+  keywords:
+    "digital marketing blog, marketing insights, SEO tips, social media strategies, AI marketing trends, political campaign strategies, WhatsApp marketing guide, influencer marketing tips, video marketing, content marketing",
+}
 
 export default function BlogPage() {
   const featuredPost = {

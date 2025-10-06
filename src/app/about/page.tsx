@@ -1,6 +1,15 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Target, Eye, Lightbulb, Shield, TrendingUp, Calendar } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About Us - Trinetra Techverse | Orbit Media Digital Marketing Agency",
+  description:
+    "Learn about Trinetra Techverse and Orbit Media, a leading AI-driven digital marketing agency. Discover our vision, mission, values, and the expert team behind our success in delivering innovative marketing solutions.",
+  keywords:
+    "about Trinetra Techverse, Orbit Media team, digital marketing agency Mumbai, AI marketing company, marketing agency history, our mission, our vision, marketing experts, digital marketing professionals",
+}
 
 export default function AboutPage() {
   const values = [

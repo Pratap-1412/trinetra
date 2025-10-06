@@ -25,14 +25,14 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/" className="text-foreground hover:text-secondary transition-colors">
               Home
             </Link>
 
             <div className="relative">
               <button
                 onClick={() => setServicesOpen(!servicesOpen)}
-                className="flex items-center space-x-1 text-foreground hover:text-primary transition-colors"
+                className="flex items-center space-x-1 text-foreground hover:text-secondary transition-colors"
               >
                 <span>Services</span>
                 <ChevronDown className="w-4 h-4" />
@@ -42,48 +42,63 @@ export default function Navigation() {
                 <div className="absolute top-full left-0 mt-2 w-64 bg-card border border-border rounded-2xl shadow-soft-lg py-2 z-50">
                   <Link
                     href="/services"
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors"
                   >
                     All Services
                   </Link>
                   <Link
                     href="/services#whatsapp"
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors"
                   >
                     WhatsApp Marketing
                   </Link>
                   <Link
                     href="/services#social-media"
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors"
                   >
                     Social Media Marketing
                   </Link>
                   <Link
                     href="/services#seo"
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors"
                   >
                     SEO & Website Marketing
+                  </Link>
+                  <Link
+                    href="/services#political"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors"
+                  >
+                    Political Campaigning
+                  </Link>
+                  <Link
+                    href="/services#web-development"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors"
+                  >
+                    Website Development
                   </Link>
                 </div>
               )}
             </div>
 
-            <Link href="/portfolio" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/portfolio" className="text-foreground hover:text-secondary transition-colors">
               Portfolio
             </Link>
-            <Link href="/blog" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/blog" className="text-foreground hover:text-secondary transition-colors">
               Blog
             </Link>
-            <Link href="/about" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/about" className="text-foreground hover:text-secondary transition-colors">
               About
             </Link>
-            <Link href="/contact" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/careers" className="text-foreground hover:text-secondary transition-colors">
+              Careers
+            </Link>
+            <Link href="/contact" className="text-foreground hover:text-secondary transition-colors">
               Contact
             </Link>
 
             <Link
               href="/contact"
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-2xl hover:bg-primary/90 transition-colors font-medium"
+              className="bg-primary text-primary-foreground px-6 py-2 rounded-2xl hover:bg-secondary transition-colors font-medium"
             >
               Get Started
             </Link>
@@ -102,27 +117,30 @@ export default function Navigation() {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-foreground hover:text-primary transition-colors">
+              <Link href="/" className="text-foreground hover:text-secondary transition-colors">
                 Home
               </Link>
-              <Link href="/services" className="text-foreground hover:text-primary transition-colors">
+              <Link href="/services" className="text-foreground hover:text-secondary transition-colors">
                 Services
               </Link>
-              <Link href="/portfolio" className="text-foreground hover:text-primary transition-colors">
+              <Link href="/portfolio" className="text-foreground hover:text-secondary transition-colors">
                 Portfolio
               </Link>
-              <Link href="/blog" className="text-foreground hover:text-primary transition-colors">
+              <Link href="/blog" className="text-foreground hover:text-secondary transition-colors">
                 Blog
               </Link>
-              <Link href="/about" className="text-foreground hover:text-primary transition-colors">
+              <Link href="/about" className="text-foreground hover:text-secondary transition-colors">
                 About
               </Link>
-              <Link href="/contact" className="text-foreground hover:text-primary transition-colors">
+              <Link href="/careers" className="text-foreground hover:text-secondary transition-colors">
+                Careers
+              </Link>
+              <Link href="/contact" className="text-foreground hover:text-secondary transition-colors">
                 Contact
               </Link>
               <Link
                 href="/contact"
-                className="bg-primary text-primary-foreground px-6 py-2 rounded-2xl hover:bg-primary/90 transition-colors font-medium text-center"
+                className="bg-primary text-primary-foreground px-6 py-2 rounded-2xl hover:bg-secondary transition-colors font-medium text-center"
               >
                 Get Started
               </Link>

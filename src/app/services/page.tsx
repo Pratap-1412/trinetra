@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import type { Metadata } from "next"
 import {
   MessageSquare,
   Share2,
@@ -17,10 +18,82 @@ import {
   ArrowRight,
   CheckCircle,
   Plus,
+  Code,
+  Megaphone,
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Our Services - Digital Marketing, Web Development & Political Campaigns | Trinetra Techverse",
+  description:
+    "Comprehensive digital marketing services including political campaigning, website development, SEO, social media marketing, WhatsApp marketing, and AI-driven analytics. One-stop solution for all your marketing needs.",
+  keywords:
+    "digital marketing services, political campaigning, website development, web design, SEO services, social media marketing, WhatsApp marketing, influencer marketing, video marketing, PPC advertising, AI analytics, corporate branding",
+}
 
 export default function ServicesPage() {
   const mainServices = [
+    {
+      id: "political",
+      icon: Vote,
+      title: "Political Campaigning",
+      description: "Strategic political marketing campaigns that win elections and build strong voter connections.",
+      features: [
+        "WhatsApp group management and voter outreach",
+        "Social media campaign strategies",
+        "Digital poster and banner design",
+        "Targeted voter messaging and segmentation",
+        "Opposition research and analysis",
+        "Crisis communication management",
+      ],
+      benefits: [
+        "Wider voter reach across demographics",
+        "Targeted messaging for different voter groups",
+        "Real-time campaign monitoring and adjustments",
+        "Cost-effective campaigning compared to traditional methods",
+      ],
+    },
+    {
+      id: "digital-marketing",
+      icon: Megaphone,
+      title: "Digital Marketing",
+      description:
+        "Comprehensive digital marketing strategies that drive traffic, engagement, and conversions across all channels.",
+      features: [
+        "Multi-channel marketing campaigns",
+        "Content marketing and strategy",
+        "Email marketing automation",
+        "Marketing funnel optimization",
+        "Conversion rate optimization (CRO)",
+        "Marketing automation and workflows",
+      ],
+      benefits: [
+        "Increased brand visibility and awareness",
+        "Higher conversion rates and ROI",
+        "Data-driven marketing decisions",
+        "Scalable marketing solutions",
+      ],
+    },
+    {
+      id: "web-development",
+      icon: Code,
+      title: "Website Development",
+      description:
+        "Custom website development with modern technologies, responsive design, and seamless user experiences.",
+      features: [
+        "Custom website design and development",
+        "Responsive and mobile-first design",
+        "E-commerce website development",
+        "Content Management Systems (CMS)",
+        "Website maintenance and support",
+        "Performance optimization and security",
+      ],
+      benefits: [
+        "Professional online presence",
+        "Mobile-friendly responsive design",
+        "Fast loading and optimized performance",
+        "Secure and scalable architecture",
+      ],
+    },
     {
       id: "whatsapp",
       icon: MessageSquare,
@@ -119,26 +192,6 @@ export default function ServicesPage() {
         "Increased organic traffic",
         "Better user experience",
         "Long-term sustainable growth",
-      ],
-    },
-    {
-      id: "political",
-      icon: Vote,
-      title: "Political Campaigning",
-      description: "Strategic political marketing campaigns that win elections.",
-      features: [
-        "WhatsApp group management",
-        "Social media campaign strategies",
-        "Digital poster and banner design",
-        "Voter outreach programs",
-        "Opposition research and analysis",
-        "Crisis communication management",
-      ],
-      benefits: [
-        "Wider voter reach",
-        "Targeted messaging",
-        "Real-time campaign monitoring",
-        "Cost-effective campaigning",
       ],
     },
     {
@@ -250,11 +303,11 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <h1 className="text-4xl lg:text-6xl font-bold text-foreground text-balance">
-              Our <span className="text-primary">Services</span>
+              Our <span className="text-secondary">Services</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Comprehensive digital marketing solutions designed to grow your business. From AI-powered analytics to
-              traditional marketing channels, we've got you covered.
+              Comprehensive digital marketing solutions including political campaigning, website development, and
+              AI-powered analytics designed to grow your business and win campaigns.
             </p>
           </div>
         </div>
@@ -274,8 +327,8 @@ export default function ServicesPage() {
                   <div className={`space-y-8 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
                     <div className="space-y-4">
                       <div className="flex items-center space-x-4">
-                        <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
-                          <service.icon className="w-8 h-8 text-primary" />
+                        <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center">
+                          <service.icon className="w-8 h-8 text-secondary" />
                         </div>
                         <h2 className="text-3xl lg:text-4xl font-bold text-foreground">{service.title}</h2>
                       </div>
@@ -300,7 +353,7 @@ export default function ServicesPage() {
                         <div className="space-y-2">
                           {service.benefits.map((benefit, benefitIndex) => (
                             <div key={benefitIndex} className="flex items-center space-x-3">
-                              <Plus className="w-4 h-4 text-primary flex-shrink-0" />
+                              <Plus className="w-4 h-4 text-secondary flex-shrink-0" />
                               <span className="text-muted-foreground">{benefit}</span>
                             </div>
                           ))}
@@ -308,16 +361,16 @@ export default function ServicesPage() {
                       </div>
                     </div>
 
-                    <button className="bg-primary text-primary-foreground px-8 py-4 rounded-2xl hover:bg-primary/90 transition-colors font-semibold flex items-center space-x-2">
+                    <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-2xl hover:bg-secondary/90 transition-colors font-semibold flex items-center space-x-2">
                       <span>Learn More</span>
                       <ArrowRight className="w-5 h-5" />
                     </button>
                   </div>
 
                   <div className={`relative ${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
-                    <div className="bg-card rounded-3xl p-8 shadow-soft-lg border border-border">
+                    <div className="bg-card rounded-3xl p-8 shadow-soft-lg border border-border hover:border-secondary/50 transition-all duration-300">
                       <img
-                        src={`/placeholder.png?height=400&width=600&text=${service.title.replace(" ", "+")}`}
+                        src={`/.jpg?height=400&width=600&query=${service.title.replace(/ /g, "+")}`}
                         alt={service.title}
                         className="w-full h-auto rounded-2xl"
                       />
@@ -344,15 +397,17 @@ export default function ServicesPage() {
             {additionalServices.map((service, index) => (
               <div
                 key={index}
-                className="bg-card border border-border rounded-3xl p-8 hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1 group text-center"
+                className="bg-card border border-border rounded-3xl p-8 hover:shadow-soft-lg hover:border-secondary/50 transition-all duration-300 hover:-translate-y-1 group text-center"
               >
                 <div className="space-y-6">
-                  <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="w-10 h-10 text-primary" />
+                  <div className="w-20 h-20 bg-secondary/10 rounded-3xl flex items-center justify-center mx-auto group-hover:bg-secondary/20 transition-colors">
+                    <service.icon className="w-10 h-10 text-secondary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground">{service.title}</h3>
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-secondary transition-colors">
+                    {service.title}
+                  </h3>
                   <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                  <button className="text-primary hover:text-primary/80 transition-colors font-semibold flex items-center space-x-2 mx-auto">
+                  <button className="text-secondary hover:text-secondary/80 transition-colors font-semibold flex items-center space-x-2 mx-auto">
                     <span>Get Started</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -364,21 +419,25 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-gradient-to-r from-primary to-primary/90 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground text-balance">
               Ready to Get Started?
             </h2>
-            <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed">
               Choose the services that best fit your business needs, or let us create a custom package for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-2xl hover:bg-secondary/90 transition-colors font-semibold flex items-center justify-center space-x-2">
+              <button className="bg-secondary text-secondary-foreground px-8 py-4 rounded-2xl hover:bg-secondary/90 transition-all duration-300 font-semibold flex items-center justify-center space-x-2 shadow-lg">
                 <span>Contact Us Today</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="border border-primary-foreground/20 text-primary-foreground px-8 py-4 rounded-2xl hover:bg-primary-foreground/10 transition-colors font-semibold">
+              <button className="border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-2xl hover:bg-primary-foreground hover:text-primary transition-all duration-300 font-semibold">
                 View Our Portfolio
               </button>
             </div>

@@ -367,3 +367,13 @@ export default function PortfolioPage() {
     </div>
   )
 }
+
+// Note: Since this is a client component, we'll add metadata via the layout or create a separate metadata export
+// For now, we'll document the intended metadata in comments
+
+/*
+Intended Metadata:
+title: "Portfolio - Success Stories & Case Studies | Trinetra Techverse"
+description: "Explore our portfolio of successful digital marketing campaigns across political, retail, healthcare, technology, and education sectors. See how we've helped 200+ clients achieve 300% average growth."
+keywords: "digital marketing portfolio, case studies, success stories, political campaign results, marketing case studies, client testimonials, campaign results, Orbit Media portfolio"
+*/

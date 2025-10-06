@@ -22,10 +22,10 @@ export default function Footer() {
               solutions.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="w-5 h-5 opacity-80 hover:opacity-100 cursor-pointer transition-opacity" />
-              <Twitter className="w-5 h-5 opacity-80 hover:opacity-100 cursor-pointer transition-opacity" />
-              <Instagram className="w-5 h-5 opacity-80 hover:opacity-100 cursor-pointer transition-opacity" />
-              <Linkedin className="w-5 h-5 opacity-80 hover:opacity-100 cursor-pointer transition-opacity" />
+              <Facebook className="w-5 h-5 opacity-80 hover:opacity-100 hover:text-secondary cursor-pointer transition-all" />
+              <Twitter className="w-5 h-5 opacity-80 hover:opacity-100 hover:text-secondary cursor-pointer transition-all" />
+              <Instagram className="w-5 h-5 opacity-80 hover:opacity-100 hover:text-secondary cursor-pointer transition-all" />
+              <Linkedin className="w-5 h-5 opacity-80 hover:opacity-100 hover:text-secondary cursor-pointer transition-all" />
             </div>
           </div>
 
@@ -33,22 +33,43 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Quick Links</h3>
             <div className="space-y-2">
-              <Link href="/" className="block text-sm opacity-80 hover:opacity-100 transition-opacity">
+              <Link href="/" className="block text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-all">
                 Home
               </Link>
-              <Link href="/services" className="block text-sm opacity-80 hover:opacity-100 transition-opacity">
+              <Link
+                href="/services"
+                className="block text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-all"
+              >
                 Services
               </Link>
-              <Link href="/portfolio" className="block text-sm opacity-80 hover:opacity-100 transition-opacity">
+              <Link
+                href="/portfolio"
+                className="block text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-all"
+              >
                 Portfolio
               </Link>
-              <Link href="/about" className="block text-sm opacity-80 hover:opacity-100 transition-opacity">
+              <Link
+                href="/about"
+                className="block text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-all"
+              >
                 About Us
               </Link>
-              <Link href="/blog" className="block text-sm opacity-80 hover:opacity-100 transition-opacity">
+              <Link
+                href="/blog"
+                className="block text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-all"
+              >
                 Blog
               </Link>
-              <Link href="/contact" className="block text-sm opacity-80 hover:opacity-100 transition-opacity">
+              <Link
+                href="/careers"
+                className="block text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-all"
+              >
+                Careers
+              </Link>
+              <Link
+                href="/contact"
+                className="block text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-all"
+              >
                 Contact
               </Link>
             </div>
@@ -61,9 +82,9 @@ export default function Footer() {
               <span className="block text-sm opacity-80">WhatsApp Marketing</span>
               <span className="block text-sm opacity-80">Social Media Marketing</span>
               <span className="block text-sm opacity-80">SEO & Website Marketing</span>
-              <span className="block text-sm opacity-80">Influencer Marketing</span>
-              <span className="block text-sm opacity-80">Video Marketing</span>
-              <span className="block text-sm opacity-80">AI-Driven Analytics</span>
+              <span className="block text-sm opacity-80">Political Campaigning</span>
+              <span className="block text-sm opacity-80">Website Development</span>
+              <span className="block text-sm opacity-80">Digital Marketing</span>
             </div>
           </div>
 

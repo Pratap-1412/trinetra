@@ -446,3 +446,13 @@ export default function ContactPage() {
     </div>
   )
 }
+
+// Note: Since this is a client component, we'll add metadata via the layout or create a separate metadata export
+// For now, we'll document the intended metadata in comments
+
+/*
+Intended Metadata:
+title: "Contact Us - Get in Touch | Trinetra Techverse - Orbit Media"
+description: "Contact Trinetra Techverse for AI-driven digital marketing solutions. Get free consultation for political campaigning, website development, SEO, and comprehensive marketing services. Available 24/7."
+keywords: "contact digital marketing agency, free marketing consultation, Trinetra Techverse contact, Orbit Media Mumbai, digital marketing inquiry, get quote, marketing services contact"
+*/
